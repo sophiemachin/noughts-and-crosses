@@ -54,31 +54,23 @@ int main () {
 	int position;
 	int x = 1;
 
-	// bool playerOneTurn = true;
-
-	// cout << m[0];
-
 	while (!winnerDeclared) {
 
-		// cout << "Player " << x << " enter a position: \n";
+		cout << "Player " << x << " enter a position: \n";
 		std::cin >> position;
 		// cout << "You have entered: " << position <<  "\n\n";
 
 		cout << "x: " << x;
 		cout << "\n";
-		// cout << mark[playerOneTurn];
 		cout << "\n\n\n";
 
 		board[position] = x + 1;
 
 		draw();
 
-		// playerOneTurn = !playerOneTurn;
 		x = 1 - x;
 
 	}
 
-	// cout << argc;
-	// cout << m[1];
 	cout << "\n\n";
 }
