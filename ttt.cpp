@@ -57,14 +57,22 @@ int main () {
 	while (!winnerDeclared) {
 
 		cout << "Player " << x << " enter a position: \n";
+
+		int validPosition = false;
+
 		std::cin >> position;
-		// cout << "You have entered: " << position <<  "\n\n";
 
-		cout << "x: " << x;
-		cout << "\n";
-		cout << "\n\n\n";
+		validPosition = board[position] == 0;
 
+		while (!validPosition) {
+			cout << "Taken, choose another position.\n";
+			std::cin >> position;
+			validPosition = board[position] == 0;
+		}
+		
 		board[position] = x + 1;
+
+		
 
 		draw();
 
