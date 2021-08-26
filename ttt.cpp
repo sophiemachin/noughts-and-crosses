@@ -1,46 +1,84 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <unistd.h>
 
 using namespace std;
 
+
+// Compile and run with:
+// g++ -std=c++11 ttt.cpp && ./a.out
+
 int board[9] = { 0 };
 
+bool winnerDeclared = false;
+
 map<int,string> m = {
-    { 0, "_" },
+    { 0, " " },
     { 1, "O" },
     { 2, "X" },
 };
 
 
+map<bool,string> mark = {
+    { true, "O" },
+    { false, "X" },
+};
+
 void draw() {
 
+    cout << "\n     |     |      \n";
+
+    cout << "  " << m[board[0]] << "  |  " << m[board[1]] << "  |  " << m[board[2]] << "\n";
  
-    std::cout << "\n     |     |      \n";
+    cout << "_____|_____|_____ \n";
+    cout << "     |     |      \n";
  
-    std::cout << "  " << board[0] << "  |  " << board[1] << "  |  " << board[2] << "\n";
+    cout << "  " << m[board[3]] << "  |  " << m[board[4]] << "  |  " << m[board[5]] << "\n";
  
-    std::cout << "_____|_____|_____ \n";
-    std::cout << "     |     |      \n";
+    cout << "_____|_____|_____ \n";
+    cout << "     |     |      \n";
  
-    std::cout << "  " << board[3] << "  |  " << board[4] << "  |  " << board[5] << "\n";
+    cout << "  " << m[board[6]] << "  |  " << m[board[7]] << "  |  " << m[board[8]] << "\n";
+    cout << "     |     |      \n";
  
-    std::cout << "_____|_____|_____ \n";
-    std::cout << "     |     |      \n";
- 
-    std::cout << "  " << board[6] << "  |  " << board[7] << "  |  " << board[8] << "\n";
-    std::cout << "     |     |      \n";
- 
-    std::cout << "\n";
+    cout << "\n";
 
 }
 
 
-
 int main () {
 
-	// draw();
+	draw();
 
-	cout << m[1];
+	int position;
+	int x = 1;
+
+	// bool playerOneTurn = true;
+
+	// cout << m[0];
+
+	while (!winnerDeclared) {
+
+		// cout << "Player " << x << " enter a position: \n";
+		std::cin >> position;
+		// cout << "You have entered: " << position <<  "\n\n";
+
+		cout << "x: " << x;
+		cout << "\n";
+		// cout << mark[playerOneTurn];
+		cout << "\n\n\n";
+
+		board[position] = x + 1;
+
+		draw();
+
+		// playerOneTurn = !playerOneTurn;
+		x = 1 - x;
+
+	}
+
+	// cout << argc;
+	// cout << m[1];
 	cout << "\n\n";
 }
