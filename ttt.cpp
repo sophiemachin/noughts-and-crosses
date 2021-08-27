@@ -27,6 +27,8 @@ map<bool,string> mark = {
 
 void draw() {
 
+	cout << "\033[2J\033[1;1H"; // clear the screen so the board is always drawn at the top of the terminal
+
     cout << "\n     |     |      \n";
 
     cout << "  " << m[board[0]] << "  |  " << m[board[1]] << "  |  " << m[board[2]] << "\n";
@@ -46,6 +48,10 @@ void draw() {
 
 }
 
+bool isWinner() {
+	return (board[0] == board[3] == board[6] && board[0]);
+}
+
 
 int main () {
 
@@ -56,7 +62,7 @@ int main () {
 
 	while (!winnerDeclared) {
 
-		cout << "Player " << x << " enter a position: \n";
+		cout << "Player " << x << "'s turn\n";
 
 		int validPosition = false;
 
@@ -72,9 +78,11 @@ int main () {
 		
 		board[position] = x + 1;
 
-		
+		cout << isWinner();
 
 		draw();
+
+		cout << "isWinner: " << isWinner();
 
 		x = 1 - x;
 
