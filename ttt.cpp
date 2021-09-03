@@ -41,25 +41,30 @@ map<bool,string> mark = {
     { false, "X" },
 };
 
+void printRow(int a, int b, int c) {
+	cout << "  " << m[board[a]] << "  |  " << m[board[b]] << "  |  " << m[board[c]] << "\n";
+}
+
 void draw() {
 
-	// cout << "\033[2J\033[1;1H"; // clear the screen so the board is always drawn at the top of the terminal
+	cout << "\033[2J\033[1;1H"; // clear the screen so the board is always drawn at the top of the terminal
 
     cout << "\n     |     |      \n";
 
-    cout << "  " << m[board[0]] << "  |  " << m[board[1]] << "  |  " << m[board[2]] << "\n";
+	printRow(0, 1, 2);
+ 
+    cout << "_____|_____|_____ \n";
+    cout << "     |     |      \n";
+
+	printRow(3, 4, 5);
  
     cout << "_____|_____|_____ \n";
     cout << "     |     |      \n";
  
-    cout << "  " << m[board[3]] << "  |  " << m[board[4]] << "  |  " << m[board[5]] << "\n";
- 
-    cout << "_____|_____|_____ \n";
+	printRow(6, 7, 8);
+
     cout << "     |     |      \n";
- 
-    cout << "  " << m[board[6]] << "  |  " << m[board[7]] << "  |  " << m[board[8]] << "\n";
-    cout << "     |     |      \n";
- 
+
     cout << "\n";
 
 }
@@ -97,7 +102,6 @@ int main () {
 	int position;
 	int x = 0;
 	int turn = 1;
-
 
 	while (!winnerDeclared) {
 		printTurnInfo(turn, x);
